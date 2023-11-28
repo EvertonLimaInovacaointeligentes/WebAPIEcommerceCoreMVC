@@ -9,14 +9,9 @@ namespace WebAPIEcommerceCoreMVC.Service
     {
         
         
-        //MySqlConnection connection = new MySqlConnection(Environment.GetEnvironmentVariable("connection"));
+        
         MySqlConnection connection = new MySqlConnection("Server=localhost;Database=petshop_store;Uid=root;Pwd=root;");
-        /*public EmpresaService()
-        {
-            connection = new MySqlConnection();
-            
-            connection.ConnectionString = Environment.GetEnvironmentVariable("connection");
-        }*/
+        
         public async Task<bool> Remove(Int64 id)
         {
             try

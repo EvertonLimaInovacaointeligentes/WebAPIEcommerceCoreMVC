@@ -93,5 +93,19 @@ namespace WebAPIEcommerceCoreMVC.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpDelete("removeNome/{nome}")]
+        public async Task<IActionResult> DeleteNome(string nome)
+        {
+            bool removeu = await srv.RemoveNome(nome);
+            if(removeu)
+            {
+                return Ok("Sucesso");
+            }
+            else
+            {
+                return BadRequest("falha ao remover");
+            }
+        }
     }
 }

@@ -32,15 +32,32 @@ namespace WebAPIEcommerceCoreMVC.Service
                 return false;
             }
         }
+        public async Task<bool> RemoveNome(string nome)
+        {
+            try
+            {
+                var parametro = new DynamicParameters();
+                parametro.Add("nome", nome, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+                var users = connection.Query<Empresa>("RemoveEmpresaNome", parametro, commandType: System.Data.CommandType.StoredProcedure);
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public async Task<bool> AddOrUpdate(Empresa emp)
         {
             try
             {
-                for (int i = 0; i < 1000001; i++)
-                {                    
-                    var parametro = new DynamicParameters();                    
-                    var users = connection.Query<Empresa>("RegisterOrUpdateEmpresa", parametro, commandType: System.Data.CommandType.StoredProcedure);
-                }
+                                
+                var parametro = new DynamicParameters();
+                parametro.Add("codigo", emp.id, System.Data.DbType.Int64, System.Data.ParameterDirection.Input);
+                parametro.Add("nome_fantasia", emp.nome_fantasia, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+                parametro.Add("data_cadastro", emp.data_cadastro, System.Data.DbType.String, System.Data.ParameterDirection.Input);
+                var users = connection.Query<Empresa>("RegisterOrUpdateEmpresa", parametro, commandType: System.Data.CommandType.StoredProcedure);
+                
                 return true;
             }
             catch

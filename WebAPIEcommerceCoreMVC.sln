@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIEcommerceCoreMVC", "WebAPIEcommerceCoreMVC.csproj", "{6C6E3FE6-DD9C-4144-A1CE-49CA9A3E28D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiMVCCoreTest", "..\WebApiMVCCoreTest\WebApiMVCCoreTest.csproj", "{08ECD2E0-61FF-4AB8-9F6A-66B685ACE2F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{6C6E3FE6-DD9C-4144-A1CE-49CA9A3E28D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C6E3FE6-DD9C-4144-A1CE-49CA9A3E28D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C6E3FE6-DD9C-4144-A1CE-49CA9A3E28D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08ECD2E0-61FF-4AB8-9F6A-66B685ACE2F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08ECD2E0-61FF-4AB8-9F6A-66B685ACE2F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08ECD2E0-61FF-4AB8-9F6A-66B685ACE2F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08ECD2E0-61FF-4AB8-9F6A-66B685ACE2F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,10 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using MySqlX.XDevAPI;
+using MySqlX.XDevAPI.Common;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.Json;
 using WebAPIEcommerceCoreMVC.Model;
 using WebAPIEcommerceCoreMVC.Service;
+using static System.Net.WebRequestMethods;
 
 namespace WebAPIEcommerceCoreMVC.Controllers
-{
+{       
     [Route("api/[controller]")]
     [ApiController]
     public class EmpresaController : ControllerBase
@@ -47,7 +55,73 @@ namespace WebAPIEcommerceCoreMVC.Controllers
             }
 
         }
+        [HttpPost("/teste")]
+        public async Task<IActionResult> post2()
+        {
+            var valor = "";
+            //HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, $"https://www.4devs.com.br/ferramentas_online.php");
+            using ( var httpClient = new HttpClient())
+            {
+                var url = @"https://www.4devs.com.br/ferramentas_online.php";
+                var content = new FormUrlEncodedContent(new[]
+       {
+             new KeyValuePair<string, string>("acao", "gerar_cpf"),
+             new KeyValuePair<string, string>("pontuacao", "N"),
+             new KeyValuePair<string, string>("sexo","H"),
+             new KeyValuePair<string, string>("txt_qtde", "1"),
+        });
 
+       /*         var jsonString = @"{
+formdata:[
+{
+ 'key':'acao',
+ 'value':'gerar_cpf'
+},
+{
+'key':'pontuacao',
+'value':'N'
+},
+{
+'key':'sexo',
+'value':'M'
+},
+{
+'key':'txt_qtde',
+'value':'1'
+}
+ ]}";*/
+                //var serializado = JsonSerializer.Serialize(jsonString);
+                /*var content = new StringContent(jsonString, Encoding.UTF8,"application/json");
+                content.Headers.Clear();                
+                content.Headers.Add("Content-Type","application/form-data");*/
+                
+                var response = httpClient.PostAsync(url, content).Result;
+                //var response =  httpClient.PostAsync(url,content).Result;
+
+                 valor =  response.Content.ReadAsStringAsync().Result;
+//                var valor3 = JsonSerializer.Deserialize<List<Usuario>>(valor);
+                //var valor5 = httpClient.PostAsync(url, content).Result.Content.ReadFromJsonAsync<Usuario>().Result;
+  //              var valor4 =JsonSerializer.Deserialize<Usuario>(valor);
+
+                
+
+    //            Usuario valor2 = new Usuario(); 
+      //          valor2 = response.Content.ReadFromJsonAsync<Usuario>().Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Cpf:"+valor.ToString());
+                   /* var response = await client.PostAsJsonAsync("api/menus", menu).Result;
+                    Int32 Id = response.Content.ReadAsAsync<Int32>().Result;*/
+                }
+                else
+                {
+                    Console.WriteLine("e nao deu");
+                }
+            }
+
+                return Ok("Cpf: "+valor);
+        }
         // POST api/<EmpresaController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Empresa emp)

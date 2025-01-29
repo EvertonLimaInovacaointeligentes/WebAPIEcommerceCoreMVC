@@ -2,7 +2,7 @@
 
 namespace WebAPIEcommerceCoreMVC.IService
 {
-    public interface IEmpresaService
+    public interface IOfertaService
     {
         public Task<List<Empresa>> empresas();
         public Task<Empresa> empresa(Int64 id);

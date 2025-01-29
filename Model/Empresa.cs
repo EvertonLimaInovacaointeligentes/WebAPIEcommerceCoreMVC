@@ -8,7 +8,12 @@ namespace WebAPIEcommerceCoreMVC.Model
     {
         [Key]
         public Int64 id { get; set; }
-        public string nome_fantasia { get; set; }
-        public string data_cadastro { get; set; }       
+        public string? nome_fantasia { get; set; }
+        public string? logradouro { get; set; }
+        public string? numero { get; set; }
+        public string? complemento { get; set; }
+        public string? cep { get; set; }
+        public string? cadastro { get; set; }   
+        public string? cnpj { get; set; }
     }
 }
